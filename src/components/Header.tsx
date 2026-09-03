@@ -77,14 +77,14 @@ export const Header: React.FC<HeaderProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg tracking-tight text-slate-900 group-hover:text-blue-600 transition">
-                  TK's Career Pilot AI
+                  CareerBridge AI
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] uppercase font-semibold tracking-wider rounded-md bg-blue-50 text-blue-700 border border-blue-200">
-                  Multi-User Ready
+                  Live Platform
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">
-                AI Career &amp; Job Application Assistant
+                Bridging the gap between you and your career.
               </p>
             </div>
           </button>

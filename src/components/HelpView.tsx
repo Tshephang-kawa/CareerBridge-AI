@@ -19,7 +19,7 @@ export const HelpView: React.FC = () => {
           <div className="flex items-center gap-2.5">
             <h1 className="text-2xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
               <HelpCircle className="w-6 h-6 text-blue-600" />
-              TK's Career Pilot AI Documentation &amp; FAQ
+              CareerBridge AI Documentation &amp; FAQ
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
               User Guide
@@ -38,7 +38,7 @@ export const HelpView: React.FC = () => {
           How to Configure Live Adzuna Job Search
         </h2>
         <p className="text-xs text-slate-600 leading-relaxed">
-          TK's Career Pilot AI connects to the official Adzuna REST API to retrieve genuine live job openings across South Africa (za) and international markets. To search live listings:
+          CareerBridge AI connects to the official Adzuna REST API to retrieve genuine live job openings across South Africa (za) and international markets. To search live listings:
         </p>
 
         <ol className="list-decimal list-inside text-xs text-slate-700 space-y-2 pl-2">
@@ -89,7 +89,7 @@ export const HelpView: React.FC = () => {
           <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-2 shadow-xs">
             <h3 className="font-bold text-slate-900 text-sm">How does the Job Match score work?</h3>
             <p className="text-slate-600 leading-relaxed">
-              TK's Career Pilot uses a transparent, deterministic weighted formula: 40% verified technical skills, 25% experience alignment, 20% education &amp; qualifications, and 15% keyword evidence. Match scores are strictly estimates to guide your CV tailoring and never guarantee employment outcomes.
+              CareerBridge AI uses a transparent, deterministic weighted formula: 40% verified technical skills, 25% experience alignment, 20% education &amp; qualifications, and 15% keyword evidence. Match scores are strictly estimates to guide your CV tailoring and never guarantee employment outcomes.
             </p>
           </div>
 

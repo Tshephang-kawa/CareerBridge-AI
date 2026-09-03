@@ -115,7 +115,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
             <span className="text-xs uppercase tracking-wider font-semibold text-blue-400">
-              TK's Career Pilot AI Security
+              CareerBridge AI Security
             </span>
           </div>
           <h2 className="text-xl font-bold mt-1 text-white">

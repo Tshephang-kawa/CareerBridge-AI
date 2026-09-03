@@ -47,15 +47,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const { currentUser, logout } = useAuth();
 
-  // Protected tabs that require login
+  // Protected tabs that strictly require login for persistent personal data
   const protectedTabs: ActiveNavTab[] = [
-    "dashboard",
-    "cv-builder",
-    "job-match",
-    "application-email",
-    "career-ai",
-    "research-assistant",
-    "task-planner",
     "saved-jobs",
     "applications",
     "my-profile",
@@ -70,30 +63,30 @@ export const Sidebar: React.FC<SidebarProps> = ({
       ],
     },
     {
-      title: "Candidate Space (Private)",
+      title: "Core Tools (Explore & Test)",
       items: [
-        { id: "dashboard" as ActiveNavTab, label: "Dashboard", icon: LayoutDashboard, isProtected: true },
-        { id: "cv-builder" as ActiveNavTab, label: "CV Builder", icon: FileText, isProtected: true },
-        { id: "job-match" as ActiveNavTab, label: "Job Match", icon: Target, isProtected: true },
-        { id: "application-email" as ActiveNavTab, label: "Application Email", icon: Mail, isProtected: true },
+        { id: "dashboard" as ActiveNavTab, label: "Dashboard", icon: LayoutDashboard, isProtected: false },
+        { id: "cv-builder" as ActiveNavTab, label: "CV Builder", icon: FileText, isProtected: false },
+        { id: "job-match" as ActiveNavTab, label: "Job Match", icon: Target, isProtected: false },
+        { id: "application-email" as ActiveNavTab, label: "Application Email", icon: Mail, isProtected: false },
       ],
     },
     {
       title: "AI & Planning",
       items: [
-        { id: "career-ai" as ActiveNavTab, label: "Career AI Chat", icon: Bot, isProtected: true },
-        { id: "research-assistant" as ActiveNavTab, label: "Research Assistant", icon: Compass, isProtected: true },
+        { id: "career-ai" as ActiveNavTab, label: "Career AI Chat", icon: Bot, isProtected: false },
+        { id: "research-assistant" as ActiveNavTab, label: "Research Assistant", icon: Compass, isProtected: false },
         {
           id: "task-planner" as ActiveNavTab,
           label: "Task Planner",
           icon: CalendarCheck,
           counter: tasksCount > 0 ? tasksCount : undefined,
-          isProtected: true,
+          isProtected: false,
         },
       ],
     },
     {
-      title: "Tracking & Shortlist",
+      title: "Personal Saved Data (Sign In)",
       items: [
         {
           id: "saved-jobs" as ActiveNavTab,
@@ -109,12 +102,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           counter: applicationsCount > 0 ? applicationsCount : undefined,
           isProtected: true,
         },
+        { id: "my-profile" as ActiveNavTab, label: "My Profile", icon: UserCheck, isProtected: true },
       ],
     },
     {
       title: "Evaluation & System",
       items: [
-        { id: "my-profile" as ActiveNavTab, label: "My Profile", icon: UserCheck, isProtected: true },
         { id: "prompt-lab" as ActiveNavTab, label: "Prompt Lab", icon: FlaskConical, badge: "25% Rubric", isProtected: false },
         { id: "responsible-ai" as ActiveNavTab, label: "Responsible AI", icon: ShieldAlert, isProtected: false },
         { id: "project-demo" as ActiveNavTab, label: "Project Demo", icon: Presentation, isProtected: false },
@@ -273,17 +266,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           )}
 
-          {/* Adzuna attribution */}
-          <div className="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[11px] text-slate-400">
-            <span>Powered by</span>
-            <a
-              href="https://www.adzuna.co.za"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-700 font-semibold text-[11px]"
-            >
-              Adzuna API
-            </a>
+          {/* Developer credit & Adzuna attribution */}
+          <div className="mt-3 pt-2 border-t border-slate-200/60 space-y-1.5 text-[11px] text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 font-medium">
+              <span>CareerBridge AI</span>
+              <span className="text-[10px] text-slate-400">v1.2</span>
+            </div>
+            <div className="text-[11px] text-slate-500 font-medium">
+              Developed by Tshephang kawa
+            </div>
+            <div className="flex items-center justify-between pt-1 border-t border-slate-100">
+              <span>Powered by</span>
+              <a
+                href="https://www.adzuna.co.za"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 font-semibold text-[11px]"
+              >
+                Adzuna API
+              </a>
+            </div>
           </div>
         </div>
       </aside>

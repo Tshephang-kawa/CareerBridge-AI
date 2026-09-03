@@ -325,7 +325,7 @@ export const TaskPlannerView: React.FC<TaskPlannerViewProps> = ({ tasks, setTask
             <CalendarCheck className="w-8 h-8 text-slate-400 mx-auto" />
             <h3 className="text-sm font-semibold text-slate-800">No tasks currently scheduled</h3>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Click 'Generate Tailored Roadmap' above to let TK's Career Pilot synthesize a weekly step-by-step application schedule.
+              Click 'Generate Tailored Roadmap' above to let CareerBridge AI synthesize a weekly step-by-step application schedule.
             </p>
           </div>
         )}

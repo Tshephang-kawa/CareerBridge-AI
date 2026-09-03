@@ -33,7 +33,7 @@ export const CareerAiChatView: React.FC<CareerAiChatViewProps> = ({ cvData }) =>
       sender: "ai",
       text: `Hello ${
         cvData.personal.fullName || "there"
-      }! I am your TK's Career Pilot AI Career Advisor. I can assist you with interview practice, upskilling strategies, portfolio guidance, and tailoring your professional story. How can I help you take your next career step today?`,
+      }! I am your CareerBridge AI Advisor. I can assist you with interview practice, upskilling strategies, portfolio guidance, and tailoring your professional story. How can I help you take your next career step today?`,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     },
   ]);
@@ -134,14 +134,14 @@ export const CareerAiChatView: React.FC<CareerAiChatViewProps> = ({ cvData }) =>
 
   const handleExportChat = () => {
     const exportText = messages
-      .map((m) => `[${m.timestamp}] ${m.sender === "user" ? "You" : "TK's Career Pilot AI"}:\n${m.text}\n`)
+      .map((m) => `[${m.timestamp}] ${m.sender === "user" ? "You" : "CareerBridge AI"}:\n${m.text}\n`)
       .join("\n---\n\n");
 
     const blob = new Blob([exportText], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `TK_CareerPilot_Chat_History_${new Date().toISOString().split("T")[0]}.txt`;
+    a.download = `CareerBridge_AI_Chat_History_${new Date().toISOString().split("T")[0]}.txt`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -259,7 +259,7 @@ export const CareerAiChatView: React.FC<CareerAiChatViewProps> = ({ cvData }) =>
                   }`}
                 >
                   <span className="font-semibold flex items-center gap-1.5">
-                    {msg.isError ? "Notice" : isAi ? "TK's Career Pilot AI" : "You"}
+                    {msg.isError ? "Notice" : isAi ? "CareerBridge AI" : "You"}
                   </span>
                   <span>{msg.timestamp}</span>
                 </div>
@@ -290,7 +290,7 @@ export const CareerAiChatView: React.FC<CareerAiChatViewProps> = ({ cvData }) =>
             </div>
             <div className="bg-white border border-slate-200 rounded-2xl p-4 text-xs text-blue-700 flex items-center gap-2 shadow-xs">
               <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-              <span>TK's Career Pilot is reviewing your request...</span>
+              <span>CareerBridge AI is reviewing your request...</span>
             </div>
           </div>
         )}
@@ -325,7 +325,7 @@ export const CareerAiChatView: React.FC<CareerAiChatViewProps> = ({ cvData }) =>
 
         <div className="flex items-center justify-between text-[11px] text-slate-500 px-1">
           <span>
-            <strong>Scope Disclaimer:</strong> TK's Career Pilot AI provides educational career coaching and does not offer legal, immigration, or financial advice.
+            <strong>Scope Disclaimer:</strong> CareerBridge AI provides educational career coaching and does not offer legal, immigration, or financial advice.
           </span>
           <span className="hidden sm:inline">Powered by Gemini 3.8</span>
         </div>

@@ -25,6 +25,7 @@ interface DashboardViewProps {
   tasks: PlannerTask[];
   setActiveTab: (tab: ActiveNavTab) => void;
   onStartWorkflowStep: (step: number) => void;
+  onOpenAuth?: (mode: "login" | "signup") => void;
 }
 
 export const DashboardView: React.FC<DashboardViewProps> = ({
@@ -34,6 +35,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   tasks,
   setActiveTab,
   onStartWorkflowStep,
+  onOpenAuth,
 }) => {
   // Calculate real CV completion percentage based on actual content
   const calculateCvCompletion = (): number => {
@@ -80,10 +82,47 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
   const { currentUser } = useAuth();
   const firstName = currentUser?.firstName?.trim();
-  const welcomeText = firstName ? `Welcome, ${firstName} 👋` : "Welcome to TK's Career Pilot AI 👋";
+  const welcomeText = firstName ? `Welcome, ${firstName} 👋` : "Welcome to CareerBridge AI 👋";
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* Guest Visitor Notice */}
+      {!currentUser && (
+        <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0">
+              <Sparkles className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-xs sm:text-sm font-semibold text-blue-950">
+                Visitor Exploration Mode
+              </p>
+              <p className="text-xs text-blue-700">
+                You can freely test CV building, AI job matching, live job search, and career tools. Sign in or create an account to permanently save your CV, bookmark jobs, or track applications.
+              </p>
+            </div>
+          </div>
+          {onOpenAuth && (
+            <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <button
+                type="button"
+                onClick={() => onOpenAuth("login")}
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold text-blue-700 hover:bg-blue-100 transition cursor-pointer"
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                onClick={() => onOpenAuth("signup")}
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow-xs transition cursor-pointer"
+              >
+                Create Account
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Welcome & Overview Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
@@ -91,7 +130,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             {welcomeText}
           </h1>
           <p className="text-slate-500 text-sm mt-1">
-            TK's Career Pilot AI is ready to help you find real Adzuna opportunities, optimize your CV, and automate applications.
+            CareerBridge AI is ready to help you find real Adzuna opportunities, optimize your CV, and automate applications.
           </p>
         </div>
 

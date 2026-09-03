@@ -147,7 +147,7 @@ export const ProjectDemoView: React.FC<ProjectDemoViewProps> = ({
           Full-Stack Architectural Data Flow
         </h2>
         <p className="text-xs text-slate-600 leading-relaxed">
-          TK's Career Pilot operates on an Express + Node.js backend proxying all AI and job search operations. No private API keys or secrets are ever exposed to the client browser.
+          CareerBridge AI operates on an Express + Node.js backend proxying all AI and job search operations. No private API keys or secrets are ever exposed to the client browser.
         </p>
 
         <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">

@@ -364,7 +364,7 @@ export const JobMatchView: React.FC<JobMatchViewProps> = ({
                   {result.jobTitle} at {result.company}
                 </h2>
                 <p className="text-xs text-slate-500">
-                  Calculated using TK's Career Pilot deterministic weighted matrix.
+                  Calculated using CareerBridge AI deterministic weighted matrix.
                 </p>
               </div>
 

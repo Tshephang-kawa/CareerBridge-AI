@@ -23,18 +23,23 @@ import {
   ProjectItem,
 } from "../types";
 import { cvAssist, extractCvFromFile } from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 interface CvBuilderViewProps {
   cvData: CVData;
   setCvData: React.Dispatch<React.SetStateAction<CVData>>;
   demoMode: boolean;
+  onOpenAuth?: (mode: "login" | "signup") => void;
 }
 
 export const CvBuilderView: React.FC<CvBuilderViewProps> = ({
   cvData,
   setCvData,
   demoMode,
+  onOpenAuth,
 }) => {
+  const { currentUser } = useAuth();
+  const [saveFeedback, setSaveFeedback] = useState<string | null>(null);
   const [activeSubTab, setActiveSubTab] = useState<
     "personal" | "summary" | "experience" | "education" | "skills" | "certifications" | "projects" | "upload"
   >("personal");
@@ -365,6 +370,22 @@ export const CvBuilderView: React.FC<CvBuilderViewProps> = ({
 
           <button
             type="button"
+            onClick={() => {
+              if (!currentUser) {
+                if (onOpenAuth) onOpenAuth("login");
+              } else {
+                setSaveFeedback("CV saved to your personal profile!");
+                setTimeout(() => setSaveFeedback(null), 3000);
+              }
+            }}
+            className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs flex items-center gap-1.5 transition cursor-pointer"
+          >
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            {currentUser ? (saveFeedback || "Save CV") : "Sign In to Save CV"}
+          </button>
+
+          <button
+            type="button"
             onClick={exportAsText}
             className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 shadow-xs flex items-center gap-1.5 transition"
           >
@@ -373,6 +394,37 @@ export const CvBuilderView: React.FC<CvBuilderViewProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Visitor Mode Banner */}
+      {!currentUser && (
+        <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2.5">
+            <Sparkles className="w-4 h-4 text-blue-600 shrink-0" />
+            <span className="text-blue-900">
+              <strong>Testing as Visitor:</strong> Feel free to fill in sections, run AI enhancements, and export your CV. Sign in or create an account to save your CV permanently.
+            </span>
+          </div>
+          {onOpenAuth && (
+            <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+              <button
+                type="button"
+                onClick={() => onOpenAuth("login")}
+                className="font-semibold text-blue-700 hover:underline cursor-pointer"
+              >
+                Sign In
+              </button>
+              <span className="text-blue-300">|</span>
+              <button
+                type="button"
+                onClick={() => onOpenAuth("signup")}
+                className="font-semibold text-blue-700 hover:underline cursor-pointer"
+              >
+                Create Account
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Navigation Sub-Tabs */}
       <div className="flex flex-wrap gap-1.5 border-b border-slate-200 pb-2 text-xs font-medium">

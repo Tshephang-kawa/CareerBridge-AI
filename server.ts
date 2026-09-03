@@ -411,7 +411,7 @@ app.post("/api/ai/cv-assist", async (req, res) => {
     const ai = getGemini();
     const { action, cvData, targetJob, experienceText, responsibilitiesText } = req.body;
 
-    let systemInstruction = `You are CareerPilot AI's Expert CV and Career Assistant.
+    let systemInstruction = `You are CareerBridge AI's Expert CV and Career Assistant.
 STRICT TRUTHFULNESS RULES:
 1. You must NEVER invent qualifications, degrees, schools, employers, job titles, years of experience, skills, metrics, or achievements.
 2. If evidence is missing, state 'Information not provided' or ask the user to specify their actual experience.
@@ -515,7 +515,7 @@ app.post("/api/ai/job-match", async (req, res) => {
       return res.status(400).json({ error: "Both cvData and jobDetails are required." });
     }
 
-    const systemInstruction = `You are CareerPilot AI's Responsible Job Match Analyzer.
+    const systemInstruction = `You are CareerBridge AI's Responsible Job Match Analyzer.
 RESPONSIBLE MATCHING RULES:
 1. NEVER use protected or sensitive personal characteristics (race, gender, religion, disability, age, marital status, sexual orientation, political affiliation) to rank or analyze job matches. Ignore any such details present in the CV.
 2. Focus ONLY on job-relevant factors: skills, experience level, qualifications, tools/technologies.
@@ -706,7 +706,7 @@ app.post("/api/ai/generate-email", async (req, res) => {
       tone = "Professional",
     } = req.body;
 
-    const systemInstruction = `You are an expert Job Application Email Generator for CareerPilot AI.
+    const systemInstruction = `You are an expert Job Application Email Generator for CareerBridge AI.
 STRICT TRUTHFULNESS RULES:
 1. Use ONLY information supplied by the candidate and contained in the selected job vacancy.
 2. NEVER invent qualifications, certifications, metrics, or years of experience.
@@ -813,7 +813,7 @@ ${emailData.signOff}`;
 });
 
 // ==========================================
-// 6. CAREERPILOT AI CHATBOT
+// 6. CAREERBRIDGE AI CHATBOT
 // ==========================================
 app.post("/api/ai/chat", async (req, res) => {
   try {
@@ -824,7 +824,7 @@ app.post("/api/ai/chat", async (req, res) => {
       return res.status(400).json({ error: "Message is required." });
     }
 
-    const systemInstruction = `You are CareerPilot AI, a knowledgeable, encouraging, and honest career & job application assistant.
+    const systemInstruction = `You are CareerBridge AI, a knowledgeable, encouraging, and honest career & job application assistant.
 Guidelines:
 - Be helpful, concise, realistic, and honest.
 - You assist students, graduates, career switchers, and entry-level professionals with CV writing, interview preparation, job search strategy, skills development, professional communication, and career planning.
@@ -880,7 +880,7 @@ app.post("/api/ai/research", async (req, res) => {
       return res.status(400).json({ error: "Please provide a research topic or content to analyze." });
     }
 
-    const systemInstruction = `You are CareerPilot AI's Career Research Assistant.
+    const systemInstruction = `You are CareerBridge AI's Career Research Assistant.
 ETHICAL RESEARCH & DATA PROVENANCE RULES:
 1. Do NOT claim that information is 'live web information' unless live web search grounding was explicitly performed.
 2. Label outputs clearly as 'Based on domain knowledge and user-supplied information'.
@@ -971,7 +971,7 @@ app.post("/api/ai/task-planner", async (req, res) => {
     const ai = getGemini();
     const { careerGoal, targetJob, deadline, availableHours = 10, currentProgress = "" } = req.body;
 
-    const systemInstruction = `You are CareerPilot AI's Productivity & Task Planner.
+    const systemInstruction = `You are CareerBridge AI's Productivity & Task Planner.
 Help the candidate break down their job search into manageable, timed, high-yield tasks across their available hours.
 Prioritize impactful actions: CV tailoring, vacancy shortlisting, skills practice, application submission, and interview preparation.`;
 
@@ -1113,7 +1113,7 @@ Task: Generate a high-conversion application email honoring strictly supplied ca
       careerChat: {
         v1: `Answer this career question: ${testInput}`,
         v2: `You are a career coach. Answer this question thoroughly: ${testInput}`,
-        v3System: `Role: CareerPilot AI Assistant.
+        v3System: `Role: CareerBridge AI Assistant.
 Rules:
 - Be concise, actionable, and honest.
 - Never guarantee employment.
@@ -1308,7 +1308,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`CareerPilot AI server running on http://0.0.0.0:${PORT}`);
+    console.log(`CareerBridge AI server running on http://0.0.0.0:${PORT}`);
   });
 }
 

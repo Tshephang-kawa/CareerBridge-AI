@@ -71,7 +71,7 @@ export const ResponsibleAiView: React.FC<ResponsibleAiViewProps> = ({
               Mandatory Human-in-the-Loop Acknowledgment
             </h2>
             <p className="text-xs text-slate-600 leading-relaxed">
-              In accordance with ethical AI deployment standards, TK's Career Pilot AI requires all candidates to actively inspect and verify every generated summary, STAR achievement bullet, and email draft before submitting to prospective employers.
+              In accordance with ethical AI deployment standards, CareerBridge AI requires all candidates to actively inspect and verify every generated summary, STAR achievement bullet, and email draft before submitting to prospective employers.
             </p>
           </div>
         </div>
@@ -100,7 +100,7 @@ export const ResponsibleAiView: React.FC<ResponsibleAiViewProps> = ({
           </div>
           <h3 className="font-bold text-sm text-slate-900">1. Hallucination Mitigation</h3>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Large Language Models can hallucinate skills, metrics, and non-existent credentials. TK's Career Pilot enforces negative constraints and system instructions forbidding the fabrication of employers, dates, or degrees.
+            Large Language Models can hallucinate skills, metrics, and non-existent credentials. CareerBridge AI enforces negative constraints and system instructions forbidding the fabrication of employers, dates, or degrees.
           </p>
         </div>
 

@@ -37,14 +37,8 @@ import { HelpView } from "./components/HelpView";
 const RESPONSIBLE_AI_KEY = "careerpilot_responsible_ai_v1";
 const DEMO_MODE_KEY = "careerpilot_demo_mode_v1";
 
+// Only persistent personal storage tabs strictly require login
 const PROTECTED_TABS: ActiveNavTab[] = [
-  "dashboard",
-  "cv-builder",
-  "job-match",
-  "application-email",
-  "career-ai",
-  "research-assistant",
-  "task-planner",
   "saved-jobs",
   "applications",
   "my-profile",
@@ -361,13 +355,14 @@ function MainAppContent() {
             />
           )}
 
-          {activeTab === "dashboard" && currentUser && (
+          {activeTab === "dashboard" && (
             <DashboardView
               cvData={cvData}
               savedJobs={savedJobs}
               applications={applications}
               tasks={tasks}
               setActiveTab={handleNavigate}
+              onOpenAuth={(mode) => handleOpenAuth(mode)}
               onStartWorkflowStep={(stepNum) => {
                 if (stepNum === 1 || stepNum === 2 || stepNum === 9) handleNavigate("cv-builder");
                 else if (stepNum === 3 || stepNum === 4 || stepNum === 5) handleNavigate("find-jobs");
@@ -390,15 +385,16 @@ function MainAppContent() {
             />
           )}
 
-          {activeTab === "cv-builder" && currentUser && (
+          {activeTab === "cv-builder" && (
             <CvBuilderView
               cvData={cvData}
               setCvData={setCvData}
               demoMode={demoMode}
+              onOpenAuth={(mode) => handleOpenAuth(mode)}
             />
           )}
 
-          {activeTab === "job-match" && currentUser && (
+          {activeTab === "job-match" && (
             <JobMatchView
               cvData={cvData}
               savedJobs={savedJobs}
@@ -409,7 +405,7 @@ function MainAppContent() {
             />
           )}
 
-          {activeTab === "application-email" && currentUser && (
+          {activeTab === "application-email" && (
             <ApplicationEmailView
               cvData={cvData}
               savedJobs={savedJobs}
@@ -418,15 +414,15 @@ function MainAppContent() {
             />
           )}
 
-          {activeTab === "career-ai" && currentUser && (
+          {activeTab === "career-ai" && (
             <CareerAiChatView cvData={cvData} />
           )}
 
-          {activeTab === "research-assistant" && currentUser && (
+          {activeTab === "research-assistant" && (
             <ResearchAssistantView />
           )}
 
-          {activeTab === "task-planner" && currentUser && (
+          {activeTab === "task-planner" && (
             <TaskPlannerView
               tasks={tasks}
               setTasks={setTasks}
