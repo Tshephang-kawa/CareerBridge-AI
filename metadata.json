@@ -1,0 +1,6 @@
+{
+  "name": "TK's Career Pilot AI",
+  "description": "Your AI Career & Job Application Assistant - Live Adzuna job search, ATS CV optimization, transparent job matching, tailored application emails, career research, task planner, and prompt engineering lab.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

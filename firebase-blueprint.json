@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile information and personal metadata",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "firstName": { "type": "string", "maxLength": 100 },
+        "lastName": { "type": "string", "maxLength": 100 },
+        "location": { "type": "string", "maxLength": 150 },
+        "professionalTitle": { "type": "string", "maxLength": 150 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["userId", "email", "firstName", "lastName"]
+    },
+    "CVData": {
+      "title": "CVData",
+      "description": "The candidate curriculum vitae document and details",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "personal": { "type": "object" },
+        "summary": { "type": "string", "maxLength": 4000 },
+        "education": { "type": "array" },
+        "experience": { "type": "array" },
+        "skills": { "type": "object" },
+        "certifications": { "type": "array" },
+        "projects": { "type": "array" },
+        "languages": { "type": "array" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["userId"]
+    },
+    "SavedJob": {
+      "title": "SavedJob",
+      "description": "A job opportunity bookmarked by the candidate",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "jobId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 250 },
+        "company": { "type": "string", "maxLength": 200 },
+        "location": { "type": "string", "maxLength": 200 },
+        "url": { "type": "string", "maxLength": 1000 },
+        "dateSaved": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 50 },
+        "matchScore": { "type": "number" },
+        "notes": { "type": "string", "maxLength": 2000 }
+      },
+      "required": ["id", "userId", "jobId", "title"]
+    },
+    "ApplicationRecord": {
+      "title": "ApplicationRecord",
+      "description": "Record of a sent or drafted job application",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "jobTitle": { "type": "string", "maxLength": 250 },
+        "company": { "type": "string", "maxLength": 200 },
+        "location": { "type": "string", "maxLength": 200 },
+        "jobUrl": { "type": "string", "maxLength": 1000 },
+        "appliedDate": { "type": "string", "maxLength": 64 },
+        "status": { "type": "string", "maxLength": 50 },
+        "emailSubject": { "type": "string", "maxLength": 500 },
+        "emailBody": { "type": "string", "maxLength": 10000 },
+        "notes": { "type": "string", "maxLength": 2000 }
+      },
+      "required": ["id", "userId", "jobTitle", "company"]
+    },
+    "PlannerTask": {
+      "title": "PlannerTask",
+      "description": "A scheduled task or goal in the user weekly application planner",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 300 },
+        "dayOrPhase": { "type": "string", "maxLength": 100 },
+        "durationMinutes": { "type": "number" },
+        "priority": { "type": "string", "maxLength": 20 },
+        "category": { "type": "string", "maxLength": 50 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "completed": { "type": "boolean" },
+        "dueDate": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "userId", "title", "completed"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private user profile documents"
+    },
+    "/users/{userId}/cv/main": {
+      "schema": "CVData",
+      "description": "Candidate CV document"
+    },
+    "/users/{userId}/savedJobs/{jobId}": {
+      "schema": "SavedJob",
+      "description": "User bookmarked job vacancies"
+    },
+    "/users/{userId}/applications/{applicationId}": {
+      "schema": "ApplicationRecord",
+      "description": "User tracked applications"
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "PlannerTask",
+      "description": "User planner action tasks"
+    }
+  }
+}
